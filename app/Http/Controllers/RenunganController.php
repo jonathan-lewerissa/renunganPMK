@@ -41,7 +41,7 @@ class RenunganController extends Controller
         $new = new Renungan();
         if($request->gambar->isValid()){
             $filename = time().'.'.$request->gambar->getClientOriginalExtension();
-            $path = $request->gambar->move('img',$filename);
+            $path = $request->gambar->move('storage/img',$filename);
             $new->gambar = $path;
         }
         $new->tanggal = $request->tanggal;
@@ -95,7 +95,7 @@ class RenunganController extends Controller
         $r->sumber = $request->sumber;
         if($request->gambar->isValid()){
             $filename = time().'.'.request()->gambar->getClientOriginalExtension();
-            $path = $request->file('gambar')->move('img',$filename);
+            $path = $request->file('gambar')->move('storage/img',$filename);
             $r->gambar = $path;
         }
         $r->save();
