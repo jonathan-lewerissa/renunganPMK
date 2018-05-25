@@ -101,10 +101,17 @@
 	            </div>
 	            <br>
 	            <div id="isi">
-	            	<label for="isi">Isi:</label>
-	            	 <textarea name="isi" id="isi" rows="7" cols="70" required>{{$r->isi}}</textarea>
+	            	<label for="isi-form">Isi:</label>
+                    <textarea name="isi" id="isi-form" rows="7" cols="70" required onload="wordcount()" onkeyup="wordcount()">{{$r->isi}}</textarea>
 	            </div>
 	            <br>
+				<div id="hitungkata">
+					<label for="word_count">Jumlah kata</label>
+					<input type="text" id="word_count" size="3" readonly>
+					<label for="char_count">Jumlah karakter</label>
+					<input type="text" id="char_count" size="3" readonly>
+				</div>
+				<br>
 	            <div id="sumber">
 	            	<label for="gambar">Sumber:</label>
 	            	<input type="text" name="sumber" value="{{$r->sumber}}" required>
@@ -114,5 +121,6 @@
             </form>
         </div>
     </div>
+    {{ Html::script('js/wordcount.js') }}
 </body>
 </html>

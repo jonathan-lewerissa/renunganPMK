@@ -87,13 +87,15 @@
                                <div class="col-md-6"><button type="submit">DELETE</button></div>
                             </form>
                         </th>    
-                      <th scope="row" rowspan="4">{{$a->tanggal}}</th>
+                      <th scope="row" rowspan="4">{{Carbon\Carbon::parse($a->tanggal)->format('l\\, j F Y')}}</th>
                       <th scope="row" rowspan="4">{{$a->ayat_emas}}</th>
                       <td rowspan="4">
                           @if($a->gambar == null)
                             <p>No image</p>
                           @else
-                            <img src="{{$a->gambar}}" style="width:100px;height:100px;">
+                            <a href="{{$a->gambar}}" target="_blank">
+                                <img src="{{$a->gambar}}" style="width:100px;height:100px;">
+                            </a>
                           @endif
                       </td>
                       <td>[{{$a->judul}}]</td>

@@ -12,61 +12,62 @@
 
     <!-- Styles -->
     <style>
-    html, body {
-        background-color: #fff;
-        color: #636b6f;
-        font-family: 'Raleway', sans-serif;
-        font-weight: 100;
-        height: 100vh;
-        margin: 0;
-    }
+        html, body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+        }
 
-    .full-height {
-        height: 100vh;
-    }
+        .full-height {
+            height: 100vh;
+        }
 
-    .flex-center {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
 
-    .position-ref {
-        position: relative;
-    }
+        .position-ref {
+            position: relative;
+        }
 
-    .top-right {
-        position: absolute;
-        right: 10px;
-        top: 18px;
-    }
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
 
-    .content {
-        text-align: center;
-    }
+        .content {
+            text-align: center;
+        }
 
-    .title {
-        font-size: 84px;
-    }
+        .title {
+            font-size: 84px;
+        }
 
-    .links > a {
-        color: #636b6f;
-        padding: 0 25px;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .1rem;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
-    .m-b-md {
-        margin-bottom: 30px;
-    }
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-</style>
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
 </head>
 <body>
     <div class="flex-center position-ref full-height">
@@ -101,9 +102,16 @@
 	            </div>
 	            <br>
 	            <div id="isi">
-	            	<label for="isi">Isi:</label>
-	            	 <textarea name="isi" id="isi" rows="7" cols="70" required></textarea>
-	            </div>
+	            	<label for="isi-form">Isi:</label>
+					<textarea name="isi" id="isi-form" rows="7" cols="70" required onkeyup="wordcount()"></textarea>
+				</div>
+				<br>
+                <div id="hitungkata">
+                    <label for="word_count">Jumlah kata</label>
+                    <input type="text" id="word_count" size="3" readonly>
+                    <label for="char_count">Jumlah karakter</label>
+                    <input type="text" id="char_count" size="3" readonly>
+                </div>
 	            <br>
 	            <div id="sumber">
 	            	<label for="gambar">Sumber:</label>
@@ -114,5 +122,6 @@
             </form>
         </div>
     </div>
+    {{ Html::script('js/wordcount.js') }}
 </body>
 </html>

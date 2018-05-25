@@ -39,8 +39,8 @@ class RenunganController extends Controller
     public function store(Request $request)
     {
         $new = new Renungan();
-        if($request->gambar->isValid()){
-            $filename = time().'.'.$request->gambar->getClientOriginalExtension();
+        if($request->hasFile('gambar')){
+            $filename = $request->tanggal.'-'.time().'.'.$request->gambar->getClientOriginalExtension();
             $path = $request->gambar->move('storage/img',$filename);
             $new->gambar = $path;
         }
@@ -93,8 +93,8 @@ class RenunganController extends Controller
         $r->ayat = $request->ayat;
         $r->isi = $request->isi;
         $r->sumber = $request->sumber;
-        if($request->gambar->isValid()){
-            $filename = time().'.'.request()->gambar->getClientOriginalExtension();
+        if($request->hasFile('gambar')){
+            $filename = $request->tanggal.'-'.time().'.'.request()->gambar->getClientOriginalExtension();
             $path = $request->file('gambar')->move('storage/img',$filename);
             $r->gambar = $path;
         }
@@ -111,7 +111,6 @@ class RenunganController extends Controller
     public function destroy($id)
     {
         $r = Renungan::findorfail($id);
-        // File::delete($r->gambar);
         $r->delete();
         return back();
     }
